@@ -2,8 +2,8 @@ const { Client, Pool } = require('pg');
 const { Local, Remote } = require('./../config')
 /* local */
 
+const client = new Client(Local);
 exports.LocalConnect = async () => {
-    const client = new Client(Local);
     try {
         const objConnect = await client.connect()
         console.log('Local connection established')
@@ -15,8 +15,8 @@ exports.LocalConnect = async () => {
 
 /* Remote connection */
 
+const pool = new Pool(Remote);
 exports.RemoteConnect = async () => {
-    const pool = new Pool(Remote);
     try {
         const objConnect = await pool.connect()
         console.log('Remote DB connected')
@@ -25,3 +25,17 @@ exports.RemoteConnect = async () => {
         console.log('NO remote connection ===>', error)
     }
 }
+
+
+/* tables creator */
+
+exports.CreateTable = async (newTable) => {
+    try {
+        const tableCreated = await pool.query(newTable)
+        return tableCreated
+    } catch (error) {
+        return error    
+    }
+}
+
+
