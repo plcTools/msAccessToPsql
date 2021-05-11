@@ -10,7 +10,7 @@ exports.QuerySchemas = async () => {
 }
 
 exports.QueryAllData = async (tableName) => {
-   const str = tableName
+    const str = tableName
     try {
         const schemas = await connection.query(`SELECT * FROM [${str}]`)
         return schemas

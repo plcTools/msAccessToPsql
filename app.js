@@ -35,7 +35,7 @@ function tableGenerator(nameOfTable, data) {
         i < campos.length - 1 ? str = str + ", " : str = str
     }
     const query = `CREATE TABLE IF NOT EXISTS ${nameOfTable.split(" ").join("").toLowerCase()} (${str});`
-    
+
     CreateTable(query)
         .then(tableCreated => console.log(tableCreated))
         .catch(error => console.log(error))

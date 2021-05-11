@@ -34,7 +34,7 @@ exports.CreateTable = async (newTable) => {
         const tableCreated = await pool.query(newTable)
         return tableCreated
     } catch (error) {
-        return error    
+        return error
     }
 }
 
