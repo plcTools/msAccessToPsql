@@ -30,7 +30,12 @@ function tableGenerator(nameOfTable, data) {
     let campos = data[0] && Object.keys(data[0])
     let str = ""
     for (let i = 0; i < campos?.length; i++) {
-        const str1 = campos[i].split(" ").join("").toLowerCase().replace(':', '')
+        const str1 = campos[i]
+            .split(" ")
+            .join("")
+            .toLowerCase()
+            .replace(':', '')
+            .replace('/', '_')
         str = str + str1 + " " + 'VARCHAR (50)'
         i < campos.length - 1 ? str = str + ", " : str = str
     }
